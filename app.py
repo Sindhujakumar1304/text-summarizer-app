@@ -1,14 +1,14 @@
 import streamlit as st
 import nltk
-nltk.download('punkt')
-
 from sumy.parsers.plaintext import PlaintextParser
 from sumy.nlp.tokenizers import Tokenizer
 from sumy.summarizers.lex_rank import LexRankSummarizer
 
-# Make sure punkt is downloaded at runtime
-with st.spinner("Setting up..."):
-    nltk.download('punkt')
+# Add bundled punkt data folder path
+nltk.data.path.append('./nltk_data')
+
+# Download punkt if not already present (won't redownload if bundled)
+nltk.download('punkt', download_dir='./nltk_data')
 
 st.title("Text Summarizer with LexRank")
 
